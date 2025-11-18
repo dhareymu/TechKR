@@ -14,7 +14,7 @@ body {
 /* Background */
 .background-image {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   object-fit: cover;
   object-position: center -270px;
@@ -29,46 +29,43 @@ body {
   background-color: #1800AD; /* solid blue */
   mix-blend-mode: multiply;   /* darkens bright colors underneath */
   opacity: 0.6;               /* adjust for stronger or softer overlay */
+  z-index: 1; /* behind all content */
 }
 
 /* Upper Section */
 .upper-section {
   position: absolute;
   top: 25px;
-  left: 15%;
+  left: 45%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 15px;
+  max-width: 1070px;
+  width: 90%;
+  padding: 15px 30px;
   background-color: white;
   border-radius: 50px;
+  z-index: 2; /* ensures it’s above overlay */
+}
+
+.company-name,
+.find-job,
+.post-job-container {
+  flex-shrink: 0;
 }
 
 .company-name {
   width: 145px;
   height: 50px;
-  padding-left: 25px;
+  object-fit: contain;
+  padding-left: 15px;
 }
 
 .find-job {
   font-size: 20px;
   font-weight: 500;
-  margin-left: calc(450px * (100vw / 1440px)); /* scales with screen width */
-}
-
-/* Small screens */
-@media (max-width: 768px) {
-  .find-job {
-    margin-left: calc(200px * (100vw / 768px)); /* reduces spacing on tablets */
-    font-size: 18px; /* optional: slightly smaller text */
-  }
-}
-
-@media (max-width: 480px) {
-  .find-job {
-    margin-left: 0; /* stack items if needed on mobile */
-    font-size: 16px; 
-  }
+  margin-left: auto; /* pushes this to the right */
 }
 
 .dropdown-arrow {
@@ -118,36 +115,44 @@ body {
   white-space: nowrap;
 }
 
+.website-description,
+.about,
+.join-button {
+  transform: none;
+  text-align: left;
+  left: 20%;
+}
+
 /* Website Description */
 .website-description {
   position: absolute;
   top: 17%;
-  left: 19%;
-  width: 50%;
+  width: 80%;
+  max-width: 950px; 
   color: white;
   font-size: 80px;
   font-weight: bold;
-  line-height: 100px;
+  line-height: 1.2;
+  z-index: 2;           /* ensure above overlay */
 }
 
 /* About Section */
 .about {
   position: absolute;
   top: 45%;
-  left: 19%;
-  width: 29%;
+  width: 80%;
+  max-width: 550px;
   color: white;
   font-size: 22px;
   font-weight: 500;
-  
+  z-index: 2;
 }
 
 /* Join Button */
 .join-button {
   position: absolute;
-  top: 55%;
-  left: 19%;
-  padding: 8px 40px;
+  top: 54.5%;
+  padding: 10px 40px;
   font-size: 25px;
   font-weight: 500;
   color: #1800AD;
@@ -155,4 +160,42 @@ body {
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  z-index: 2;
+}
+
+/* ===================== Responsive Media Queries ===================== */
+
+/* Large Tablets / Small Laptops */
+@media (max-width: 1024px) {
+  .website-description { top: 15%; font-size: 60px; left: 15%; }
+  .about { top: 42%; font-size: 20px; left: 15%; }
+  .join-button { top: 52%; font-size: 22px; padding: 8px 35px; left: 15%; }
+}
+
+/* Small Tablets / Large Phones */
+@media (max-width: 768px) {
+  .website-description { top: 12%; font-size: 50px; left: 10%; }
+  .about { top: 38%; font-size: 18px; left: 10%; }
+  .join-button { top: 48%; font-size: 20px; padding: 6px 30px; left: 10%; }
+
+  .upper-section {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 15px;
+    gap: 10px;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+  .website-description,
+  .about,
+  .join-button { left: 5%; }
+
+  .upper-section {
+    flex-wrap: wrap;
+    padding: 10px 15px;
+    gap: 10px;
+    justify-content: center;
+  }
 }
