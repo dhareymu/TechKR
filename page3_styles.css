@@ -51,6 +51,9 @@ body {
   color: #FFB13D;
   left: 263%;
   cursor: pointer;
+}
+
+.join:hover {
   text-decoration: underline;
 }
 
