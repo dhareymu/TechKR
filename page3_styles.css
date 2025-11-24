@@ -21,7 +21,7 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
-  max-width: 200px;
+  max-width: 500px;
   width: 90%;
   z-index: 4; /* ensures it’s above overlay */
 }
@@ -31,6 +31,27 @@ body {
   height: 62px;
   object-fit: contain;
   display: inline-block;
+}
+
+.hiring,
+.join {
+  position: absolute;
+  display: flex;
+  font-weight: 400;
+  font-size: 25px;
+  width: 200px;
+}
+
+.hiring {
+  color: #FFFFFF;
+  left: 222%;
+}
+
+.join {
+  color: #FFB13D;
+  left: 263%;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .mask-group {
